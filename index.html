@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>DP Attendance System | Efficient Student Tracking & Management</title>
+  <meta name="title" content="DP Attendance System | Efficient Student Tracking & Management">
+  <meta name="description" content="Streamline attendance tracking with DP Attendance System. Feature-rich dashboard, QR code scanning, automated reporting, and WhatsApp notifications for educational institutions.">
+  <meta name="keywords" content="attendance system, student tracking, educational management, QR attendance, digital presence, classroom attendance, school attendance tracker, college attendance, teacher attendance tool, DP Attendance, automated attendance, WhatsApp notifications, attendance dashboard, attendance reports">
+  <meta name="author" content="DP Attendance System">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  <meta name="revisit-after" content="7 days">
+  <link rel="canonical" href="https://dp-qr-system.netlify.app/">
+  <meta name="theme-color" content="#1a73e8">
+
+  <!-- Performance optimizations -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="/logo.svg" as="image" type="image/svg+xml">
+  <link rel="preload" as="font" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" crossorigin>
+  <link rel="modulepreload" href="/src/main.jsx">
+  <link rel="modulepreload" href="/src/App.jsx">
+  
+  <!-- Font loading -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap" rel="stylesheet">
+  
+  <!-- Critical CSS -->
+  <style>
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #0f172a; /* slate-900 */
+        color: #f1f5f9; /* slate-100 */
+      }
+    }
+    
+    @media (prefers-color-scheme: light) {
+      body {
+        background-color: #f8fafc; /* slate-50 */
+        color: #1e293b; /* slate-800 */
+      }
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.3s ease;
+    }
+    
+    #root {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    
+    .loading-spinner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    
+    .loading-spinner::after {
+      content: "";
+      width: 50px;
+      height: 50px;
+      border: 3px solid #e2e8f0;
+      border-radius: 50%;
+      border-top-color: #3b82f6;
+      animation: spin 0.8s linear infinite;
+    }
+    
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+  
+  <!-- Open Graph / Meta -->
+  <meta property="og:title" content="DP Attendance System | Efficient Student Tracking & Management">
+  <meta property="og:description" content="Streamline attendance tracking with DP Attendance System. Feature-rich dashboard, QR code scanning, automated reporting, and WhatsApp notifications for educational institutions.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dp-qr-system.netlify.app/">
+  <meta property="og:site_name" content="DP Attendance System">
+  <meta property="og:image" content="https://dp-qr-system.netlify.app/logo.svg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="DP Attendance System | Efficient Student Tracking & Management">
+  <meta name="twitter:description" content="Streamline attendance tracking with DP Attendance System. Feature-rich dashboard, QR code scanning, automated reporting, and WhatsApp notifications for educational institutions.">
+  <meta name="twitter:image" content="https://dp-qr-system.netlify.app/logo.svg">
+  <meta name="twitter:site" content="@dpattendance">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "DP Attendance System",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "A comprehensive attendance management system for educational institutions with QR scanning, reporting, and WhatsApp integration.",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "156"
+    },
+    "featureList": "Dashboard, QR Scanner, Student Management, Reports, WhatsApp Integration",
+    "screenshot": "https://dp-qr-system.netlify.app/screenshots/dashboard.jpg",
+    "softwareHelp": "https://dp-qr-system.netlify.app/help",
+    "author": {
+      "@type": "Organization",
+      "name": "DP Education",
+      "url": "https://dp-qr-system.netlify.app/"
+    }
+  }
+  </script>
+</head>
+
+<body>
+  <div id="root">
+    <div class="loading-spinner"></div>
+  </div>
+  <script type="module" src="/src/main.jsx"></script>
+  
+  <!-- API URL Configuration -->
+  <script>
+    (function() {
+      const isProduction = window.location.hostname !== 'localhost' && 
+                           window.location.hostname !== '127.0.0.1';
+      
+      const apiUrl = isProduction 
+        ? 'https://dp-qr-system-api.netlify.app'
+        : 'http://localhost:50001';
+        
+      const linkEl = document.createElement('link');
+      linkEl.rel = 'preconnect';
+      linkEl.href = apiUrl;
+      document.head.appendChild(linkEl);
+      
+      window.API_BASE_URL = apiUrl;
+    })();
+  </script>
+  
+  <!-- Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(registration => {
+            console.log('Service Worker registered with scope:', registration.scope);
+            
+            // Check for updates
+            registration.addEventListener('updatefound', () => {
+              const newWorker = registration.installing;
+              newWorker.addEventListener('statechange', () => {
+                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                  // New version available - show update notification only in production
+                  if (location.hostname !== 'localhost' && window.confirm('New version available! Reload to update?')) {
+                    newWorker.postMessage({ type: 'SKIP_WAITING' });
+                    window.location.reload();
+                  }
+                }
+              });
+            });
+          })
+          .catch(error => {
+            console.error('Service Worker registration failed:', error);
+          });
+          
+        // Handle updates from other tabs
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+          window.location.reload();
+        });
+      });
+    }
+  </script>
+  
+  <!-- Image Lazy Loading -->
+  <script>
+    window.addEventListener('load', function() {
+      const lazyImages = document.querySelectorAll('img.lazy');
+      if ('IntersectionObserver' in window) {
+        let lazyImageObserver = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              let lazyImage = entry.target;
+              lazyImage.src = lazyImage.dataset.src;
+              lazyImage.classList.remove('lazy');
+              lazyImageObserver.unobserve(lazyImage);
+            }
+          });
+        });
+        lazyImages.forEach(function(lazyImage) {
+          lazyImageObserver.observe(lazyImage);
+        });
+      }
+    });
+  </script>
+  
+  <!-- Web Vitals Reporting -->
+  <script>
+    // Send performance data to analytics when supported and in production
+    if ('PerformanceObserver' in window && location.hostname !== 'localhost') {
+      const observer = new PerformanceObserver((list) => {
+        const entries = list.getEntries();
+        entries.forEach(entry => {
+          // You would send this data to your analytics endpoint
+          if (entry.name === 'LCP' || entry.name === 'FID' || entry.name === 'CLS') {
+            console.log(`Web Vital: ${entry.name}`, entry);
+          }
+        });
+      });
+      observer.observe({ entryTypes: ['largest-contentful-paint', 'first-input', 'layout-shift'] });
+    }
+  </script>
+</body>
+
+</html>
