@@ -1,7 +1,6 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
-
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 @layer base {
   html {
@@ -11,28 +10,62 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  
-  *, *::before, *::after {
+
+  *,
+  *::before,
+  *::after {
     @apply transition-colors duration-300;
   }
-  
+
+  @keyframes float-slow {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-15px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+
+  @keyframes float-slower {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+
+  .animate-float-slow {
+    animation: float-slow 8s ease-in-out infinite;
+  }
+
+  .animate-float-slower {
+    animation: float-slower 12s ease-in-out infinite;
+  }
+
   .dark::-webkit-scrollbar {
     width: 8px;
     height: 8px;
   }
-  
+
   .dark::-webkit-scrollbar-track {
     @apply bg-gray-800;
   }
-  
+
   .dark::-webkit-scrollbar-thumb {
     @apply bg-gray-600 rounded-full;
   }
-  
+
   .dark::-webkit-scrollbar-thumb:hover {
     @apply bg-gray-500;
   }
-  
+
   *:focus-visible {
     @apply outline-none ring-2 ring-blue-500 dark:ring-blue-400 ring-offset-2 dark:ring-offset-slate-800;
   }
@@ -40,14 +73,20 @@
 
 body {
   @apply font-sans antialiased text-gray-900 dark:text-slate-100 bg-white dark:bg-slate-900 min-h-screen transition-colors duration-200;
-  background-image: 
-    radial-gradient(at 100% 0%, rgba(59, 130, 246, 0.05) 0, transparent 50%),
+  background-image: radial-gradient(
+      at 100% 0%,
+      rgba(59, 130, 246, 0.05) 0,
+      transparent 50%
+    ),
     radial-gradient(at 0% 100%, rgba(55, 48, 163, 0.05) 0, transparent 50%);
 }
 
 .dark body {
-  background-image: 
-    radial-gradient(at 100% 0%, rgba(37, 99, 235, 0.2) 0, transparent 50%),
+  background-image: radial-gradient(
+      at 100% 0%,
+      rgba(37, 99, 235, 0.2) 0,
+      transparent 50%
+    ),
     radial-gradient(at 0% 100%, rgba(79, 70, 229, 0.2) 0, transparent 50%);
 }
 
@@ -69,7 +108,12 @@ body {
   @apply transition-[opacity] duration-200 ease-in-out;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   @apply font-medium tracking-tight text-gray-900 dark:text-white;
 }
 
@@ -93,14 +137,14 @@ p {
   @apply leading-relaxed;
 }
 
-.logos{
+.logos {
   font-family: "Cedarville Cursive", cursive;
 }
 
 * {
-  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+    sans-serif;
 }
-
 
 ::-webkit-scrollbar {
   width: 8px;
@@ -119,8 +163,9 @@ p {
   @apply bg-gray-500;
 }
 
-
-input, select, textarea {
+input,
+select,
+textarea {
   @apply focus:ring-blue-500 focus:border-blue-500 dark:focus:ring-blue-400 dark:focus:border-blue-400;
 }
 
@@ -276,13 +321,23 @@ input, select, textarea {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes scaleIn {
-  from { transform: scale(0.95); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .animate-fadeIn {
