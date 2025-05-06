@@ -49,13 +49,24 @@ export const studentService = {
       if (params.sortOrder) queryParams.append('sortOrder', params.sortOrder);
       
       const queryString = queryParams.toString();
-      const url = `/admin/students/${studentId}/attendance${queryString ? `?${queryString}` : ''}`;
+      if (!studentId || studentId === ':studentId') {
+        console.error("Invalid student ID:", studentId);
+        throw new Error('Invalid student ID provided');
+      }
       
-      const response = await api.get(url);
-      return response.data;
+      const url = `/admin/students/${studentId}/attendance${queryString ? `?${queryString}` : ''}`;
+      console.log("Making API request to:", url);
+      
+      try {
+        const response = await api.get(url);
+        return response.data;
+      } catch (apiError) {
+        console.error("API Error details:", apiError.response?.status, apiError.response?.data);
+        throw apiError;
+      }
     } catch (error) {
       console.error('Error fetching student attendance history:', error);
-      toast.error('Failed to fetch attendance history. Please try again.');
+      toast.error(error.message || 'Failed to fetch attendance history. Please try again.');
       throw error;
     }
   },
