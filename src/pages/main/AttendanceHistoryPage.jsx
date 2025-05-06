@@ -20,6 +20,8 @@ import { formatDate } from "../../utils/formatters";
 
 const AttendanceHistoryPage = () => {
   const { studentId } = useParams();
+  console.log("AttendanceHistoryPage - studentId from params:", studentId);
+  
   const navigate = useNavigate();
   const [student, setStudent] = useState(null);
   const [attendanceHistory, setAttendanceHistory] = useState([]);
@@ -51,6 +53,16 @@ const AttendanceHistoryPage = () => {
   const fetchAttendanceHistory = async () => {
     setLoading(true);
     try {
+      // Validate studentId before making the API call
+      if (!studentId || studentId === ':studentId') {
+        console.error("Invalid studentId:", studentId);
+        setError("Invalid student ID");
+        toast.error("Invalid student ID. Please check the URL.");
+        setLoading(false);
+        return;
+      }
+
+      console.log("Fetching attendance for studentId:", studentId);
       const offset = (currentPage - 1) * recordsPerPage;
       const params = {
         limit: recordsPerPage,
@@ -72,6 +84,8 @@ const AttendanceHistoryPage = () => {
         params
       );
 
+      console.log("API result:", result);
+
       if (result.status === "success") {
         setStudent(result.data.student);
         setAttendanceHistory(result.data.attendanceHistory);
@@ -91,6 +105,7 @@ const AttendanceHistoryPage = () => {
   };
 
   useEffect(() => {
+    console.log("AttendanceHistoryPage - useEffect triggered with studentId:", studentId);
     if (studentId) {
       fetchAttendanceHistory();
     }
